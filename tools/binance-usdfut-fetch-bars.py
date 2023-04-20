@@ -15,13 +15,13 @@ import qsec.time
 import qsec.app
 import common
 
-api = "https://fapi.binance.com"
+api = "https://api.binance.us"
 
 
 def call_http_fetch_klines(
-    symbol, startTime: int, endTime: int, interval: str = "1m", limit: int = 1500
+    symbol, startTime: int, endTime: int, interval: str = "5m", limit: int = 1500
 ):
-    path = "/fapi/v1/klines"
+    path = "/api/v3/klines"
     options = {
         "symbol": symbol,
         "limit": limit,
@@ -180,7 +180,7 @@ def main():
     args = parse_args()
     fromDt, uptoDt = process_args(args)
     sid = common.build_assetid(args.sym, "BNC")
-    interval = "1m"
+    interval = "5m"
     fetch(args.sym, fromDt, uptoDt, sid, interval)
 
 
